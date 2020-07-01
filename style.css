@@ -1,0 +1,47 @@
+body {
+  background-color: #f7fff7;
+}
+
+#main-container {
+  font-family: 'Chelsea Market', cursive;
+  display: grid;
+  grid-template-rows: 0fr 0fr 6fr;
+  justify-items: center;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 5px;
+  font-size: 4em;
+  color: #ff6b6b;
+}
+
+h2{
+  text-align: center;
+  color: #292f36;
+}
+
+a {
+  text-decoration: none;
+  color: #4ecdc4;
+}
+
+#game-board {
+  margin-top: 40px;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  width: 600px;
+  height: 600px;
+  border: 8px solid #292f36;
+  border-radius: 10px;
+}
+
+.cell {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  border: 8px solid #292f36;
+  font-size: 5em;
+  color: #292f36;
+}
