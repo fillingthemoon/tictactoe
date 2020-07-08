@@ -5,7 +5,7 @@ body {
 #main-container {
   font-family: 'Chelsea Market', cursive;
   display: grid;
-  grid-template-rows: 0fr 0fr 6fr;
+  grid-template-rows: 0fr 0fr 0fr 5fr;
   justify-items: center;
 }
 
@@ -27,13 +27,54 @@ a {
   color: #4ecdc4;
 }
 
+a:hover {
+  color: #ffa62b;
+}
+
+#reset-button-div {
+  width: 70%;
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  align-items: center;
+  justify-items: center;
+}
+
+#player-1-display {
+  font-size: 2em;
+  color: #4ecdc4;
+}
+
+#player-2-display {
+  font-size: 2em;
+  color: #ffa62b;
+}
+
+#reset-button {
+  font-family: 'Chelsea Market', cursive;
+  margin-top: 20px;
+  border: 5px solid #ff6b6b;
+  background-color: #ff6b6b; 
+  color: #f7fff7;
+  font-size: 2em;
+  width: 120px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+#reset-button:hover {
+  border: 5px solid #4ecdc4;
+  background-color: #f7fff7;
+  color: #4ecdc4;
+  transition: 0.3s;
+}
+
 #game-board {
-  margin-top: 40px;
+  margin-top: 30px;
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-  width: 600px;
-  height: 600px;
-  border: 8px solid #292f36;
+  width: 550px;
+  height: 550px;
+  border: 5px solid #292f36;
   border-radius: 10px;
 }
 
@@ -41,7 +82,60 @@ a {
   display: grid;
   align-items: center;
   justify-items: center;
-  border: 8px solid #292f36;
-  font-size: 5em;
+  border: 5px solid #292f36;
+  font-size: 7em;
+  color: #ffa62b;
+}
+
+#modal {
+  display: none;
+  position: fixed;
+  padding-top: 250px;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#modal-content {
+  margin: auto;
+  padding: 20px;
+  background-color: #f7fff7;
+  width: 35%;
+  border-radius: 10px;
+}
+
+#winner-display {
+  font-family: 'Chelsea Market', cursive;
+  text-align: center;
+  font-size: 2.5em;
   color: #292f36;
+  padding: 10px;
+}
+
+#play-again-button-div {
+  text-align: center;
+  padding: 10px;
+}
+
+#play-again-button {
+  font-family: 'Chelsea Market', cursive;
+  margin-top: 20px;
+  border: 5px solid #ffa62b;
+  background-color: #ffa62b; 
+  color: #f7fff7;
+  font-size: 2em;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+#play-again-button:hover {
+  border: 5px solid #4ecdc4;
+  background-color: #4ecdc4;
+  color: #f7fff7;
+  transition: 0.3s;
 }
