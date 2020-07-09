@@ -43,17 +43,16 @@ a:hover {
   width: 100%;
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  transition: 1s;
 }
 
 #modal-startgame-content {
   margin: auto;
   padding: 20px;
-  background-color: #f7fff7;
   width: 550px;
   border-radius: 10px;
   display: grid;
   justify-items: center;
+  background: rgba(247, 255, 247, 0.95); 
 }
 
 #startgame-header {
@@ -76,6 +75,10 @@ label {
 
 #p2-input, #label-p2-input {
   color: #ffa62b;
+}
+
+input {
+  background: rgba(247, 255, 247, 0); 
 }
 
 input {
@@ -192,9 +195,10 @@ input {
 #modal-endgame-content {
   margin: auto;
   padding: 20px;
-  background-color: #f7fff7;
   width: 35%;
   border-radius: 10px;
+  /* allows for text to be opage while background to be translucent */
+  background: rgba(247, 255, 247, 0.9); 
 }
 
 #endgame-display {
