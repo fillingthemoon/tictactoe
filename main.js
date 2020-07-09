@@ -24,6 +24,10 @@ const displayController = (function() {
   const gameBoardDiv = document.createElement('div');
   gameBoardDiv.id = 'game-board';
 
+  const modalEndgame = document.getElementById('modal-endgame');
+  const endgameDisplay = document.getElementById('endgame-display');
+  const modalStartgame = document.getElementById('modal-startgame');
+
   const render = () => {
     const grid = gameBoard.showGrid();
     let count = 0;
@@ -52,42 +56,37 @@ const displayController = (function() {
     allCells.forEach( cell => {
       cell.textContent = '';
     });
-    displayTurn(p1Turn);
+    displayTurn(p1Turn, p1.getName(), p2.getName());
   }
 
   const openModalWin = (p1Turn) => {
-    let player = p1Turn == true ? 'Player 1' : 'Player 2';
-    const modal = document.getElementById('modal');
-    const winnerDisplay = document.getElementById('winner-display');
-    winnerDisplay.textContent = 'Congratulations, ' + player + ' wins!';
-    modal.style.display = 'block';
+    let player = p1Turn == true ? p1.getName() : p2.getName();
+    endgameDisplay.textContent = 'Congratulations, ' + player + ' wins!';
+    modalEndgame.style.display = 'block';
   }
 
   const openModalTie = () => {
-    const modal = document.getElementById('modal');
-    const winnerDisplay = document.getElementById('winner-display');
-    winnerDisplay.textContent = 'It\'s a tie!';
-    modal.style.display = 'block';
+    endgameDisplay.textContent = 'It\'s a tie!';
+    modalEndgame.style.display = 'block';
   }
 
   const clickPlayAgain = () => {
     const playAgainBtn = document.getElementById('play-again-button');
     playAgainBtn.addEventListener('click', (e) => {
-      const modal = document.getElementById('modal');
-      modal.style.display = 'none';
+      modalEndgame.style.display = 'none';
       resetGrid(!p1Turn);
       p1Turn = !p1Turn;
     });
   }
 
-  const displayTurn = (p1Turn=true) => {
+  const displayTurn = (p1Turn) => {
     const player1Display = document.getElementById('player-1-display');
     const player2Display = document.getElementById('player-2-display');
     if (p1Turn) {
-      player1Display.textContent = 'Player 1\'s turn';
+      player1Display.textContent = p1.getName() + '\'s turn';
       player2Display.textContent = ''; 
     } else {
-      player2Display.textContent = 'Player 2\'s turn';
+      player2Display.textContent = p2.getName() + '\'s turn';
       player1Display.textContent = '';
     }
   }
@@ -141,7 +140,7 @@ const gameController = (function() {
     (cells[2] != '' && cells[2] == cells[5] && cells [2] == cells[8]) ||
     (cells[0] != '' && cells[0] == cells[4] && cells [0] == cells[8]) ||
     (cells[2] != '' && cells[2] == cells[4] && cells [2] == cells[6])) {
-      winner = p1Turn == true ? 'Player 1' : 'Player 2'; 
+      winner = p1Turn == true ? p1.getName() : p2.getName(); 
       console.log(winner + ' wins!');
       displayController.openModalWin(p1Turn);
       return true;
@@ -154,20 +153,33 @@ const gameController = (function() {
     }
   }
 
+  const clickStartgameButton = () => {
+    const modalStartgame = document.getElementById('modal-startgame');
+    const startgameButton = document.getElementById('startgame-button');
+    startgameButton.addEventListener('click', () => {
+      modalStartgame.style.display = 'none';
+      p1Name = document.getElementById('p1-input').value;
+      p2Name = document.getElementById('p2-input').value;
+      p1 = Player(p1Name);
+      p2 = Player(p2Name);
+      displayController.displayTurn(true);
+    });
+  }
+
   return {
     clickGridCells,
     clickResetBtn,
     checkWin,
+    clickStartgameButton,
   }
 })();
 
 let p1Turn = true;
-
-const p1 = Player('P1');
-const p2 = Player('P2');
+let p1 = '';
+let p2 = '';
 
 displayController.render();
+gameController.clickStartgameButton();
 gameController.clickGridCells();
 gameController.clickResetBtn();
 displayController.clickPlayAgain();
-displayController.displayTurn();
