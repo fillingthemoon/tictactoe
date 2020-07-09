@@ -105,6 +105,7 @@ input {
   width: 40%;
   border-radius: 10px;
   transition: 0.3s;
+  outline: none;
 }
 
 #startgame-button:hover {
@@ -144,6 +145,7 @@ input {
   border-radius: 10px;
   transition: 0.3s;
   justify-self: center;
+  outline: none;
 }
 
 #reset-button:hover {

@@ -157,9 +157,13 @@ const gameController = (function() {
     const modalStartgame = document.getElementById('modal-startgame');
     const startgameButton = document.getElementById('startgame-button');
     startgameButton.addEventListener('click', () => {
-      modalStartgame.style.display = 'none';
       p1Name = document.getElementById('p1-input').value;
       p2Name = document.getElementById('p2-input').value;
+      if (p1Name == '' || p2Name == '') {
+        alert('Please fill in your names!');
+        return false;
+      }
+      modalStartgame.style.display = 'none';
       p1 = Player(p1Name);
       p2 = Player(p2Name);
       displayController.displayTurn(true);
